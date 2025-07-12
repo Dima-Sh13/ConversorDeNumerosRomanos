@@ -19,7 +19,13 @@ X --->10
 V ---> 5
 I ---> 1
 """
+class RomanNumberError( Exception ):
+    pass
+
+
+
 index_control = ["M","D","C","L","X","V","I"]
+
 dic_entero_a_romano = {
     1:"I",2:"II",3:"III",4:"IV",5:"V",6:"VI",7:"VII",8:"VIII",9:'IX',
     10:"X",20:"XX",30:"XXX",40:"XL",50:"L",60:"LX",70:"LXX",80:"LXXX",90:"XC",
@@ -33,8 +39,6 @@ dic_romano_a_entero ={
     'M':1000
 }
 
-class RomanNumberError( Exception ):
-    pass
 
 """
 def entero_a_romano_for( numero ):#1994
@@ -81,6 +85,8 @@ def entero_a_romano_while( numero:int )->str:#1994
 def roman_to_int(roman:str)->int:
     memory = 0
     final_int = 0
+    contador_rep = 0
+    caracter = ""
     for char in roman:
         dic_romano_a_entero[char]
         if memory > index_control.index(char):
@@ -90,4 +96,6 @@ def roman_to_int(roman:str)->int:
             final_int += dic_romano_a_entero[char]    
 
         memory = index_control.index(char)
-    return final_int
+    return final_int   
+
+print(roman_to_int("IIX"))                                                                                                            
